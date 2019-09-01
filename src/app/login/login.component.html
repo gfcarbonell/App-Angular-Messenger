@@ -1,0 +1,41 @@
+<form class="form" method="post" autocomplete="off" (submit)="submit()" [formGroup]="loginFormGroup">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Email" formControlName="email" required/>
+      <div *ngIf="getEmailError().invalid && (getEmailError().dirty || getEmailError().touched)">
+        <div *ngIf="getEmailError().errors.required">
+          Email required
+        </div>
+        <div *ngIf="getEmailError().errors.minlength">
+          Email more that 4 charaters
+        </div>
+      </div>
+    </mat-form-field>
+  
+    <mat-form-field class="full-width">
+      <input matInput type="password" placeholder="Password" formControlName="password" required/>
+      <div *ngIf="getPasswordError().invalid && (getPasswordError().dirty || getPasswordError().touched)">
+        <div *ngIf="getPasswordError().errors.required">
+          Password required
+        </div>
+        <div *ngIf="getPasswordError().errors.minlength">
+          Password more that 4 charaters
+        </div>
+      </div>
+    </mat-form-field>
+
+    <button 
+      mat-raised-button 
+      type="submit" 
+      color="primary"
+      [disabled]="loginFormGroup.invalid" >
+        Login
+    </button>
+    <button 
+      mat-raised-button 
+      color="secondary"
+      (click)="register()"
+      >
+        Register
+    </button>
+</form>
+
