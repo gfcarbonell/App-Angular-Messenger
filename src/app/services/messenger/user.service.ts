@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 import { IUserService } from '../../contract-services/messenger/iuser.service';
 
@@ -13,7 +14,7 @@ export class UserService implements IUserService{
     throw new Error("Method not implemented.");
   }
   get(object: import("../../model-interfaces/user").User): import("../../model-interfaces/user").User {
-    throw new Error("Method not implemented.");
+    return this.http.get('https://randomuser.me/api/?results=25');
   }
   getById(id: number): import("../../model-interfaces/user").User {
     throw new Error("Method not implemented.");
